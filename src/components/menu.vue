@@ -4,7 +4,7 @@
     >
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Movie Rating Dashboard</v-toolbar-title>
+      <v-toolbar-title @click="changeTitle"> {{title}}</v-toolbar-title>
 
       <v-spacer></v-spacer>
 
@@ -44,9 +44,20 @@
 <script>
   export default {
     name: 'menuvbar',
+     props:{
+        title:{
+            type:String,
+            required:true,  
+        }
+    },
     data: () => ({
       
     }),
+    methods:{
+    changeTitle: function(){
+   this.title='Lo que me salga de las bolas'
+    }
+    },
      computed: {
     bg () {
       return this.background ? 'https://cdn.vuetifyjs.com/images/backgrounds/bg-2.jpg' : undefined

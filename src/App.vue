@@ -2,7 +2,7 @@
     <v-app>
     
 
-    <menuvbar app>
+    <menuvbar v-bind:title="Headtitle" app>
       <!-- -->
     </menuvbar>
 
@@ -20,9 +20,13 @@
       </v-col>
 
       <v-col cols="9" md="9">
+      <h4>
+      {{Headtitle}} 
+      </h4>
         <nestingcp v-bind:cards="cards"> 
         </nestingcp> 
-
+        <hr>
+  
       </v-col>
         
         </v-row>
@@ -65,6 +69,7 @@
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
       ],
+      Headtitle:'Movie Rating Dashboard '
     }),
   };
   </script>
