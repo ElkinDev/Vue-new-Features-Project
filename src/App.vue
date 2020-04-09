@@ -22,6 +22,10 @@
       <v-col cols="9" md="9">
       <h4>
       {{Headtitle}} 
+
+
+
+      
       </h4>
         <nestingcp v-bind:cards="cards"> 
         </nestingcp> 
