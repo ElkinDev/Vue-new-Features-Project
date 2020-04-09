@@ -31,7 +31,7 @@
       class="ma-2 white--text"
       @click="removing = 'loading3'"
     >
-      Upload
+      Remove
       <v-icon right dark>mdi-cloud-upload</v-icon>
     </v-btn>
 
