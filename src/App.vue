@@ -20,31 +20,8 @@
       </v-col>
 
       <v-col cols="9" md="9">
-      <v-container class="grey lighten-5 text-center ">
-          <v-row >
-      <v-col
-        v-for="(card, index) in cards"
-        :key="card"
-        cols="12"
-        sm="4"
-        @click="card.showdetail=!card.showdetail" 
-      >
-        <v-card
-          class="pa-2"
-          outlined
-          tile
-          
-        >
-          {{card.title}} - {{index+1}}
-         <h4 v-show="card.showdetail">
-          {{card.text}}
-         
-         </h4>
-        </v-card>
-      </v-col>
-    </v-row>
- 
-      </v-container>
+        <nestingcp v-bind:cards="cards"> 
+        </nestingcp> 
 
       </v-col>
         
@@ -65,6 +42,7 @@
   <script>
   import menuvbar from './components/menu';
   import menudrawer from './components/menudrawer';
+  import nestingcp from './components/nestingcp';
 
   export default {
     name: 'App',
@@ -72,11 +50,11 @@
     components: {
       menuvbar,
       menudrawer,
-    
+      nestingcp,
     },
 
     data: () => ({
-      cards:[
+     cards:[
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
@@ -86,7 +64,7 @@
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
-      ]
+      ],
     }),
   };
   </script>
