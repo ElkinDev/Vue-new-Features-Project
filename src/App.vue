@@ -1,8 +1,8 @@
   <template>
-    <v-app>
+    <v-app >
     
 
-    <menuvbar v-bind:title="Headtitle" app>
+    <menuvbar v-bind:title="Headtitle" v-on:changeTitle="updateTitle($event)" app>
       <!-- -->
     </menuvbar>
 
@@ -20,9 +20,8 @@
       </v-col>
 
       <v-col cols="9" md="9">
-      <h4>
+      <h4 >
       {{Headtitle}} 
-
 
 
       
@@ -59,6 +58,11 @@
       menuvbar,
       menudrawer,
       nestingcp,
+    },
+    methods:{
+      updateTitle:function(upTitle){
+        this.Headtitle=upTitle
+      }
     },
 
     data: () => ({

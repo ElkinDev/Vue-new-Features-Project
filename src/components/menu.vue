@@ -55,7 +55,7 @@
     }),
     methods:{
     changeTitle: function(){
-   this.title='Lo que me salga de las bolas'
+        this.$emit('changeTitle','New Title')
     }
     },
      computed: {
