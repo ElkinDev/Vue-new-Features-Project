@@ -57,6 +57,7 @@ import {bus} from '../main';
         loading3: false,
     }), 
     methods:{
+      
     deleteCard(){
             
         return this.cards.pop();
@@ -75,13 +76,37 @@ import {bus} from '../main';
 
         this.removing = null
       },
+
+      //Life Cycle Hooks
+      
+    },
+    beforeCreated(){
+      alert('beforeCreated')
+
     },
     created(){
       bus.$on('changeTitle',(data)=>{
           this.$emit('changeTitle',data)
 
       })
+      alert('created')
+
     },
+    beforeMount(){
+      alert('beforeMount')
+    },
+    mounted(){
+      alert('mounted')
+      
+    },
+    beforeUpdate(){
+      alert('beforeUpdate')
+      
+    },
+    updated(){
+      alert('Updated')
+      
+    }
   }
 </script>
 
