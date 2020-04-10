@@ -26,7 +26,7 @@
 
       
       </h4>
-        <nestingcp v-bind:cards="cards"> 
+        <nestingcp v-bind:cards="cards" v-on:changeTitle="updateTitle($event)"> 
         </nestingcp> 
         <hr>
   

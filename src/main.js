@@ -5,7 +5,7 @@ import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
 
 Vue.config.productionTip = false
-
+export const bus= new Vue();
 new Vue({
   vuetify,
   render: h => h(App)

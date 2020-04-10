@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import {bus} from '../main';
+
   export default {
     name: 'nestingcp',
     props:{
@@ -74,9 +76,12 @@
         this.removing = null
       },
     },
-    computed:{
-        
-    }
+    created(){
+      bus.$on('changeTitle',(data)=>{
+          this.$emit('changeTitle',data)
+
+      })
+    },
   }
 </script>
 

@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import {bus} from '../main';
   export default {
     name: 'menuvbar',
      props:{
@@ -55,7 +56,8 @@
     }),
     methods:{
     changeTitle: function(){
-        this.$emit('changeTitle','New Title')
+        //this.$emit('changeTitle','New Title 1')
+        bus.$emit('changeTitle','lo que me salga de los cojones')
     }
     },
      computed: {
