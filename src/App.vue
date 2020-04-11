@@ -20,16 +20,49 @@
       </v-col>
 
       <v-col cols="9" md="9">
-      <h4 >
-      {{Headtitle}} 
-
-
-      
+      <h4 v-on:click='showForm = !showForm'>
+          {{Headtitle}} 
       </h4>
-        <nestingcp v-bind:cards="cards" v-on:changeTitle="updateTitle($event)"> 
+
+        <nestingcp v-show="!showForm"  v-bind:cards="cards" v-on:changeTitle="updateTitle($event)"> 
         </nestingcp> 
-        <hr>
-  
+          <hr>
+          <hr>
+          <formHelp v-show="showForm">
+            <div slot="inputsForm">
+             <v-text-field
+        v-model="name"
+        :counter="10"
+        :rules="nameRules"
+        label="Name"
+        required
+      ></v-text-field>
+
+      <v-text-field
+        v-model="email"
+        :rules="emailRules"
+        label="E-mail"
+        required
+      ></v-text-field>
+
+      <v-select
+        v-model="select"
+        :items="items"
+        :rules="[v => !!v || 'Item is required']"
+        label="Item"
+        required
+      ></v-select>
+
+      <v-checkbox
+        v-model="checkbox"
+        :rules="[v => !!v || 'You must agree to continue!']"
+        label="Do you agree?"
+        required
+      ></v-checkbox>
+
+            </div>
+          </formHelp> 
+         
       </v-col>
         
         </v-row>
@@ -50,6 +83,7 @@
   import menuvbar from './components/menu';
   import menudrawer from './components/menudrawer';
   import nestingcp from './components/nestingcp';
+  import formHelp from './components/formHelper';
 
   export default {
     name: 'App',
@@ -58,6 +92,7 @@
       menuvbar,
       menudrawer,
       nestingcp,
+      formHelp
     },
     methods:{
       updateTitle:function(upTitle){
@@ -66,6 +101,27 @@
     },
 
     data: () => ({
+      valid: true,
+      name: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 10) || 'Name must be less than 10 characters',
+      ],
+      email: '',
+      emailRules: [
+        v => !!v || 'E-mail is required',
+        v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      select: null,
+      items: [
+        'Item 1',
+        'Item 2',
+        'Item 3',
+        'Item 4',
+      ],
+      checkbox: false,
+      lazy: false,
+      showForm:true,
      cards:[
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},
         {title:'Card',text:'Laboris adipisicing exercitation ut irure ea tempor.',showdetail:false},

@@ -81,7 +81,7 @@ import {bus} from '../main';
       
     },
     beforeCreated(){
-      alert('beforeCreated')
+     // alert('beforeCreated')
 
     },
     created(){
@@ -89,22 +89,22 @@ import {bus} from '../main';
           this.$emit('changeTitle',data)
 
       })
-      alert('created')
+     // alert('created')
 
     },
     beforeMount(){
-      alert('beforeMount')
+     // alert('beforeMount')
     },
     mounted(){
-      alert('mounted')
+     // alert('mounted')
       
     },
     beforeUpdate(){
-      alert('beforeUpdate')
+      //alert('beforeUpdate')
       
     },
     updated(){
-      alert('Updated')
+     // alert('Updated')
       
     }
   }
