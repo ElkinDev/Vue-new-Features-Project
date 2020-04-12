@@ -20,45 +20,45 @@
       </v-col>
 
       <v-col cols="9" md="9">
-      <h4 v-on:click='showForm = !showForm'>
-          {{Headtitle}} 
-      </h4>
-
-        <nestingcp v-show="!showForm"  v-bind:cards="cards" v-on:changeTitle="updateTitle($event)"> 
-        </nestingcp> 
+        <h4 v-on:click='showForm = !showForm'>
+            {{Headtitle}} 
+        </h4>
+          
+          <nestingcp v-show="!showForm"  v-bind:cards="cards" v-on:changeTitle="updateTitle($event)"> 
+          </nestingcp> 
           <hr>
           <hr>
           <formHelp v-show="showForm">
             <div slot="inputsForm">
              <v-text-field
-        v-model="name"
-        :counter="10"
-        :rules="nameRules"
-        label="Name"
-        required
-      ></v-text-field>
+              v-model="name"
+              :counter="10"
+              :rules="nameRules"
+              label="Name"
+              required
+            ></v-text-field>
 
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-mail"
-        required
-      ></v-text-field>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-mail"
+              required
+            ></v-text-field>
 
-      <v-select
-        v-model="select"
-        :items="items"
-        :rules="[v => !!v || 'Item is required']"
-        label="Item"
-        required
-      ></v-select>
+            <v-select
+              v-model="select"
+              :items="items"
+              :rules="[v => !!v || 'Item is required']"
+              label="Item"
+              required
+            ></v-select>
 
-      <v-checkbox
-        v-model="checkbox"
-        :rules="[v => !!v || 'You must agree to continue!']"
-        label="Do you agree?"
-        required
-      ></v-checkbox>
+            <v-checkbox
+              v-model="checkbox"
+              :rules="[v => !!v || 'You must agree to continue!']"
+              label="Do you agree?"
+              required
+            ></v-checkbox>
 
             </div>
           </formHelp> 
