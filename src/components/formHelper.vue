@@ -1,11 +1,38 @@
 <template>
     <div>
-      <v-row  justify="center">
-          <v-col cols="8" md="8">
-              <v-form ref="form" v-on:submit.prevent="onSubmit" v-model="valid" :lazy-validation="lazy" >
+      
+    <v-form ref="form" v-on:submit.prevent="onSubmit" v-model="valid" :lazy-validation="lazy" >
+      
+      <v-text-field
+        v-model="name"
+        :counter="10"
+        :rules="nameRules"
+        label="Name"
+        required
+      ></v-text-field>
 
-        <slot name="inputsForm"></slot>
-     
+      <v-text-field
+        v-model="email"
+        :rules="emailRules"
+        label="E-mail"
+        required
+      ></v-text-field>
+
+      <v-select
+        v-model="select"
+        :items="items"
+        :rules="[v => !!v || 'Item is required']"
+        label="Item"
+        required
+      ></v-select>
+
+      <v-checkbox
+        v-model="checkbox"
+        :rules="[v => !!v || 'You must agree to continue!']"
+        label="Do you agree?"
+        required
+      ></v-checkbox>
+
       <v-btn
         :disabled="!valid"
         color="success"
@@ -25,10 +52,6 @@
 
 
     </v-form>
-          </v-col>
-         </v-row>
-        
-
     </div>
 </template>
 
@@ -42,8 +65,7 @@
         }
     },
     data: () => ({
-
-       valid: true,
+      valid: true,
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
