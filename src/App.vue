@@ -86,10 +86,8 @@
                       outlined
                       counter               
                       prepend-icon="mdi-camera"
-                      v-model="image"
                       :rules="imagerules"
-                      ref="article"
-                      @change="onFileChanged()"
+                      @change="processFile"
                       dense></v-file-input>
 
                   </v-col>
@@ -207,7 +205,6 @@
       <v-btn
         color="deep-primary  lighten-2"
         text
-        @click="reserve"
       >
         Submit event
       </v-btn>
@@ -274,18 +271,41 @@
       onChange() {
         console.log(this.keyword)
         },
-   onFileChanged (event) {
-    const file = event.target.files[0]
-  },
-  onUpload() {
-    const formData = new FormData()
-    formData.append('myFile', this.selectedFile, this.selectedFile.name)
-  }
+        processFile(event) {
+          this.loading=true
+          if(event){
+          console.log(event)
+
+            if(event.size<2000000){
+              let reader = new FileReader();
+              reader.readAsDataURL(event);
+              reader.onload=e=>{
+                this.image= e.target.result;
+                this.loading=false
+
+              }
+            }else{
+              this.image="https://media.gettyimages.com/photos/full-frame-shot-of-gray-background-picture-id969661112?s=2048x2048"
+            this.loading=false
+
+            }
+          }else{
+            this.loading=false
+              this.image="https://media.gettyimages.com/photos/full-frame-shot-of-gray-background-picture-id969661112?s=2048x2048"
+
+          }
+          
+          
+        }
 
     },
 
     data: () => ({
-    selectedFile: null,
+      selection:true,
+      someData:null,
+      showForm:true,
+      loading:false,
+      checkbox:true,
       image:"https://media.gettyimages.com/photos/full-frame-shot-of-gray-background-picture-id969661112?s=2048x2048",
       showsize:true,
       keyword:[],
@@ -317,7 +337,7 @@
         v => (v && v.length >= 20) || ' must be less than 20 characters',
       ],
       imagerules: [
-      value => !value || value.size < 2000000 || 'Avatar size should be less than 2 MB!',
+      value => !value || value.size < 2000000 || 'Footage size should be less than 2 MB!',
     ],
       email: '',
       emailRules: [
@@ -339,6 +359,5 @@
       keywords: ["Cine", "Drama", "Thiller", "Comedy"],
       valuek: ["Cine", "Drama", "Thiller", "Comedy"],
     }),
-    computed(){}
   };
   </script>
