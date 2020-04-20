@@ -28,11 +28,12 @@
             </v-list-item>
   
             <v-divider></v-divider>
-  
+            
             <v-list-item
               v-for="item in items"
               :key="item.title"
               link
+              :to="`/${item.link}`"
             >
               <v-list-item-icon>
                 <v-icon>{{ item.icon }}</v-icon>
@@ -48,7 +49,6 @@
 </template>
 
 <script>
-import {bus} from '../main';
 
   export default {
     name: 'menudrawer',
@@ -56,12 +56,16 @@ import {bus} from '../main';
     return {
       drawer: true,
       items: [
-        { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-        { title: 'Movies', icon: 'mdi-movie' },
-        { title: 'Rating List', icon: 'mdi-star' },
-        { title: 'users', icon: 'mdi-account-circle-outline' },
-        { title: 'Photos', icon: 'mdi-image' },
-        { title: 'About', icon: 'mdi-help-box' },
+        { title: 'Dashboard', icon: 'mdi-view-dashboard', link:'' },
+        { title: 'Events', icon: 'mdi-movie', link:'events' },
+        { title: 'Events', icon: 'mdi-event', link:'newEvent' },
+        
+        { title: 'Calendar', icon: 'mdi-calendar' ,link:'calendar' },
+        { title: 'Rating List', icon: 'mdi-star' ,link:'ratingList' },
+        { title: 'users', icon: 'mdi-account-circle-outline' ,link:'user' },
+        { title: 'Photos', icon: 'mdi-image', link:'photos' },
+        { title: 'Variables', icon: 'mdi-help-box',link:'variables' },
+        { title: 'Elements Guide', icon: 'mdi-help-box', link:'elements' },
       ],
       color: 'primary',
       colors: [
