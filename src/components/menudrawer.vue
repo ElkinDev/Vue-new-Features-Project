@@ -10,6 +10,7 @@
           absolute
           dark
          :permanent="permanent"
+          :width="200"
         >
           <v-list
             dense
@@ -57,8 +58,8 @@
       drawer: true,
       items: [
         { title: 'Dashboard', icon: 'mdi-view-dashboard', link:'' },
-        { title: 'Events', icon: 'mdi-movie', link:'events' },
-        { title: 'Events', icon: 'mdi-event', link:'newEvent' },
+        { title: 'Events', icon: 'mdi-card', link:'events' },
+        { title: 'New event', icon: 'mdi-card', link:'newEvent' },
         
         { title: 'Calendar', icon: 'mdi-calendar' ,link:'calendar' },
         { title: 'Rating List', icon: 'mdi-star' ,link:'ratingList' },
@@ -75,8 +76,8 @@
         'red',
         'teal',
       ],
-      miniVariant: true,
-      expandOnHover: true,
+      miniVariant: false,
+      expandOnHover: false,
       background: true,
       floating:true,
       right: false,

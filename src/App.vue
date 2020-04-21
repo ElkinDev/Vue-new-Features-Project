@@ -31,7 +31,7 @@
               </menudrawer>
           </v-col>
 
-          <v-col cols="9" md="9" justify="end">
+          <v-col cols="8" md="8" flex-direction="center">
     
             <router-view>
             
