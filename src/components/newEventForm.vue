@@ -83,6 +83,35 @@
                             required
 
                         ></v-textarea>
+
+
+                         <v-col cols="12" md="12">
+                                <v-menu
+                                  ref="menu"
+                                  v-model="menu"
+                                  :close-on-content-click="false"
+                                  :return-value.sync="dates"
+                                  transition="scale-transition"
+                                  offset-y
+                                  min-width="290px"
+                                >
+                                  <template v-slot:activator="{ on }">
+                                    <v-text-field
+                                      v-model="dates"
+                                      label="Date"
+                                      readonly
+                                      v-on="on"
+                                    ></v-text-field>
+                                  </template>
+                                  <v-date-picker range v-model="dates" no-title scrollable>
+                                    <v-spacer></v-spacer>
+                                    <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
+                                    <v-btn text color="primary" @click="$refs.menu.save(dates)">OK</v-btn>
+                                  </v-date-picker>
+                                </v-menu>
+                            </v-col>
+      <v-spacer></v-spacer>
+
                         </v-col>
 
                         <v-checkbox
@@ -200,6 +229,9 @@
     name: 'eventForm',
   data () {
     return {
+
+      dates: ['2019-09-10', '2019-09-20'],
+    menu: false,
      selection:true,
       someData:null,
       showForm:true,
@@ -256,7 +288,7 @@
       ],
       lazy: true,
       Headtitle:'Events Rating Dashboard',
-      keywords: ["Cine", "Drama", "Thiller", "Comedy"],
+      keywords: ["Birthday", "Apoitment", "Party", "Class","Interview","Travel","Meeting","Conference"],
       valuek: ["Cine", "Drama", "Thiller", "Comedy"],
       newEvent: []
     }
@@ -311,7 +343,9 @@
         }
   },
   computed: {
- 
+      dateRangeText () {
+        return this.dates.join(' ~ ')
+      },
   },
   }
 </script>
