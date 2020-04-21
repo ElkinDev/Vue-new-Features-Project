@@ -95,14 +95,14 @@
                                   ref="menu"
                                   v-model="menu"
                                   :close-on-content-click="false"
-                                  :return-value.sync="date"
+                                  :return-value.sync="dates"
                                   transition="scale-transition"
                                   offset-y
                                   min-width="290px"
                                 >
                                   <template v-slot:activator="{ on }">
                                     <v-text-field
-                                      v-model="date"
+                                      v-model="dates"
                                       label="Date"
                                       readonly
                                       v-on="on"
@@ -110,10 +110,10 @@
                                        required
                                     ></v-text-field>
                                   </template>
-                                  <v-date-picker range v-model="date" no-title scrollable>
+                                  <v-date-picker range v-model="dates" no-title scrollable>
                                     <v-spacer></v-spacer>
                                     <v-btn text color="primary" @click="menu = false">Cancel</v-btn>
-                                    <v-btn text color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                                    <v-btn text color="primary" @click="$refs.menu.save(dates)">OK</v-btn>
                                   </v-date-picker>
                                 </v-menu>
                             </v-col>
@@ -269,7 +269,7 @@
     return {
  time: null,
         menu2: false,
-      date: [],
+      dates: ['2019-09-10', '2019-09-20'],
     menu: false,
      selection:true,
       someData:null,
@@ -382,8 +382,8 @@
         }
   },
   computed: {
-      save () {
-        return this.date.join(' ~ ')
+      dateRangeText () {
+        return this.dates.join(' ~ ')
       },
   },
   }
